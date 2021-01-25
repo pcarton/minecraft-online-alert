@@ -1,0 +1,16 @@
+{
+  "name": "minecraft-online-alert",
+  "version": "0.0.1",
+  "description": "Web Server to make alerts showing online users for a given Minecraft server",
+  "main": "getOnlineFaces.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "patrick.d.carton@gmail.com",
+  "license": "ISC"
+}
