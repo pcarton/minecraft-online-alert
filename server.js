@@ -2,9 +2,15 @@ const express = require('express');
 const getOnlineFaces = require('./getOnlineFaces.js')
 const bodyParser = require('body-parser');
 const path = require('path');
+const https = require('https');
+const http = require('http');
+const fs = require('fs');
 
 const app = express();
-const port = 3000;
+const httpPort = 3000;
+const httpsPort = 5000;
+const keyPath = '/etc/app-certs/privkey.pem';
+const certPath = '/etc/app-certs/fullchain.pem';
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -52,6 +58,17 @@ app.use('/', (req,res) => {
     res.sendFile(path.join(__dirname+'/express/index.html'));
 });
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}!`);
+// Listen both http & https ports
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer({
+  key: fs.readFileSync(`${keyPath}`),
+  cert: fs.readFileSync(`${certPath}`),
+}, app);
+
+httpServer.listen(httpPort, () => {
+    console.log(`HTTP Server running on port ${httpPort}`);
+});
+
+httpsServer.listen(httpsPort, () => {
+    console.log(`HTTPS Server running on port ${httpsPort}`);
 });
