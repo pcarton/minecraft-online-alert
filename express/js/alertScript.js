@@ -22,6 +22,7 @@ function submitFunction() {
     let address = $('#serverAddress').val();
     setCookie('serverAddress', address);
     $('#serverAddressFormDiv').hide(0);
+    refreshUsers()
     $(document).mouseenter(showBanner);
     alertTimer = setInterval(showBanner,alertInterval*1000);
     refeshUsersTimer = setInterval(refreshUsers,refreshInterval*1000);
