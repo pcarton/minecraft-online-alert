@@ -30,14 +30,14 @@ body{
     color:#191919;
 }
 
-.faceImage{
-    position: absolute;
-    top:50%;
-    height:50px;
-    margin-top:-25px;
-    width:50px;
+.faceImage {
+    position: relative;
+    top: 50%;
+    height: 50px;
+    margin-top: 25px;
+    width: 50px;
     margin-left: 20px;
-    float:left;
+    float: left;
 }
 
 #skinTest {
